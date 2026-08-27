@@ -19,7 +19,6 @@
 #include "host/ble_uuid.h"
 #include "host/util/util.h"
 
-
 //esp
 #include "esp_log.h"
 #include "nvs_flash.h"
