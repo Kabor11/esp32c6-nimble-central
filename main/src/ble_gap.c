@@ -20,20 +20,66 @@ int ble_gap_event(struct ble_gap_event *event, void *arg){
 
       int rc;
 
-      switch (event->type)
-      {
+      switch (event->type){
       case BLE_GAP_EVENT_DISC:
-            rc = ble_hs_adv_parse_fields(&fields, event->disc.data, event->disc.length_data);
+            // rc = ble_hs_adv_parse_fields(&fields, event->disc.data, event->disc.length_data);
+            // if(rc != 0){
+            //       return 0;
+            // }
+
+      connect_if_interesting(&event->disc);
+            
+            return 0;
+      case BLE_GAP_EVENT_CONNECT:
+            if(event->connect.status == 0){
+                  ESP_LOGI(TAG, "Connected conn_handle=%d", event->connect.conn_handle);
+
+                  rc = ble_gatt_start_discovery(event->connect.conn_handle);
+
+                  if(rc != 0){
+                        ESP_LOGE(TAG, "Error: Failed to start discovery; rc=%d", rc);
+                        
+                        ble_gap_terminate(event->connect.conn_handle, BLE_ERR_REM_USER_CONN_TERM);
+                        return 0;
+                  }
+            } else {
+                  ESP_LOGE(TAG, "Connection failed; status=%d", event->connect.status);
+
+                  central_scan(); //dopisać
+            }
+            return 0;
+
+      case BLE_GAP_EVENT_DISCONNECT:
+            ESP_LOGI(TAG, "Disconnected; reason=%d", event->disconnect.reason);
+
+            central_scan(); //dopisać
+            return 0;
+
+      case BLE_GAP_EVENT_NOTIFY_RX:
+            uint8_t buf[32]; //na potrzeby esp_logi
+            uint16_t len; //na potrzeby esp_logi
+            ESP_LOGI(TAG, "Received notification; conn_handle=%d attr_handle=%d len=%d",
+                  event->notify_rx.conn_handle,
+                  event->notify_rx.attr_handle,
+                  OS_MBUF_PKTLEN(event->notify_rx.om));
+
+            rc = ble_hs_mbuf_to_flat(event->notify_rx.om, buf, sizeof(buf), &len);
             if(rc != 0){
+                  ESP_LOGE(TAG, "Error: Failed to copy notification data; rc=%d", rc);
                   return 0;
             }
+            ESP_LOGI(TAG, "Received data: ");
 
-            
-            break;
+            for (int i = 0; i < len; i++) {
+                  ESP_LOGI(TAG, "%02X ", buf[i]);
+            }
+
+            return 0;
       
       default:
             break;
       }
+      return 0;
 }
 
 
