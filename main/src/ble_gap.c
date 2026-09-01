@@ -19,8 +19,35 @@ int ble_gap_event(struct ble_gap_event *event, void *arg){
 
       switch (event->type){
       case BLE_GAP_EVENT_DISC:
+            rc = ble_hs_adv_parse_fields(&fields,
+                                          event->disc.data,
+                                          event->disc.length_data);
 
-      connect_if_interesting(&event->disc);
+            if (rc != 0) {
+                  ESP_LOGE(TAG, "Failed to parse advertisement; rc=%d", rc);
+                  return 0;
+            }
+
+            ESP_LOGI(TAG, "--------------------------------");
+            ESP_LOGI(TAG, "Device found");
+            ESP_LOGI(TAG, "RSSI: %d dBm", event->disc.rssi);
+
+            // tutaj wypisujesz adres BLE
+            ESP_LOGI(TAG, "Address: %02X:%02X:%02X:%02X:%02X:%02X",
+                  event->disc.addr.val[5],
+                  event->disc.addr.val[4],
+                  event->disc.addr.val[3],
+                  event->disc.addr.val[2],
+                  event->disc.addr.val[1],
+                  event->disc.addr.val[0]);
+            // tutaj wypisujesz nazwę, jeżeli advertising ją zawiera
+            ESP_LOGI(TAG, "name_len = %d", fields.name_len);
+            ESP_LOGI(TAG, "Device name: %.*s", fields.name_len, fields.name);
+            // tutaj możesz wypisać UUID-y
+            ESP_LOGI(TAG, "Number of 128-bit UUIDs: %d", fields.num_uuids128);
+            ESP_LOGI(TAG, "--------------------------------");
+
+            //tutaj musze zrobić 
             
             return 0;
       case BLE_GAP_EVENT_CONNECT:

@@ -31,5 +31,7 @@
     "--background-index",
     "--query-driver=**",
     "--compile-commands-dir=c:\\Users\\Laptop\\Documents\\ESPIDF\\my_nimble_central\\build"
-  ]
+  ],
+  "idf.flashType": "UART",
+  "idf.portWin": "COM7"
 }
