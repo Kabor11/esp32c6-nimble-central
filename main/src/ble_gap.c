@@ -141,3 +141,15 @@ void central_scan(void){
       }
 
 }
+
+void ble_on_reset(int reason){
+      ESP_LOGE(TAG, "Resetting state; reason=%d", reason);
+
+}
+void ble_on_sync(void){
+      int rc;
+      rc = ble_hs_util_ensure_addr(0);
+      assert(rc == 0);
+
+      central_scan();
+}
