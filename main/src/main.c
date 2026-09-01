@@ -1,5 +1,6 @@
 #include "common.h"
 #include "ble_main.h"
+#include "ble_host_task.h"
 
 void app_main(void)
 {
@@ -10,4 +11,6 @@ void app_main(void)
       }
        
       ble_init();
+
+      nimble_port_freertos_init(ble_host_task);
 }
