@@ -1,6 +1,7 @@
 #include "ble_gap.h"
 //trzeba będzie dodać uuid urządzenia (svc i charakterystyki) z którego będzie odbierany notify
 
+static const char* TAG = "ble_gap";
 
 static const ble_uuid_t *remote_svc_uuid =
     BLE_UUID128_DECLARE(
@@ -26,14 +27,14 @@ int ble_gap_event(struct ble_gap_event *event, void *arg){
             if(event->connect.status == 0){
                   ESP_LOGI(TAG, "Connected conn_handle=%d", event->connect.conn_handle);
 
-                  rc = ble_gatt_start_discovery(event->connect.conn_handle);
+                  // rc = ble_gatt_start_discovery(event->connect.conn_handle);
 
-                  if(rc != 0){
-                        ESP_LOGE(TAG, "Error: Failed to start discovery; rc=%d", rc);
+                  // if(rc != 0){
+                  //       ESP_LOGE(TAG, "Error: Failed to start discovery; rc=%d", rc);
                         
-                        ble_gap_terminate(event->connect.conn_handle, BLE_ERR_REM_USER_CONN_TERM);
-                        return 0;
-                  }
+                  //       ble_gap_terminate(event->connect.conn_handle, BLE_ERR_REM_USER_CONN_TERM);
+                  //       return 0;
+                  // }
             } else {
                   ESP_LOGE(TAG, "Connection failed; status=%d", event->connect.status);
 
