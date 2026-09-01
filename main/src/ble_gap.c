@@ -1,10 +1,6 @@
 #include "ble_gap.h"
 //trzeba będzie dodać uuid urządzenia (svc i charakterystyki) z którego będzie odbierany notify
 
-// BLE_GAP_EVENT_DISC
-// BLE_GAP_EVENT_CONNECT
-// BLE_GAP_EVENT_DISCONNECT
-// BLE_GAP_EVENT_NOTIFY_RX
 
 static const ble_uuid_t *remote_svc_uuid =
     BLE_UUID128_DECLARE(
@@ -22,10 +18,6 @@ int ble_gap_event(struct ble_gap_event *event, void *arg){
 
       switch (event->type){
       case BLE_GAP_EVENT_DISC:
-            // rc = ble_hs_adv_parse_fields(&fields, event->disc.data, event->disc.length_data);
-            // if(rc != 0){
-            //       return 0;
-            // }
 
       connect_if_interesting(&event->disc);
             
@@ -45,14 +37,14 @@ int ble_gap_event(struct ble_gap_event *event, void *arg){
             } else {
                   ESP_LOGE(TAG, "Connection failed; status=%d", event->connect.status);
 
-                  central_scan(); //dopisać
+                  central_scan();
             }
             return 0;
 
       case BLE_GAP_EVENT_DISCONNECT:
             ESP_LOGI(TAG, "Disconnected; reason=%d", event->disconnect.reason);
 
-            central_scan(); //dopisać
+            central_scan();
             return 0;
 
       case BLE_GAP_EVENT_NOTIFY_RX:
@@ -117,9 +109,35 @@ void connect_if_interesting(const struct ble_gap_disc_desc *disc){
             return;
       }
 
-      ble_gap_disc_cancel(); //dopisać
+      ble_gap_disc_cancel();
 
       ble_hs_id_infer_auto(0, &addr_type);
 
       ble_gap_connect(addr_type, &disc->addr, 30000, NULL, ble_gap_event, NULL);
+}
+
+void central_scan(void){
+      uint8_t own_addr_type;
+      struct ble_gap_disc_params disc_params = {0};
+      int rc;
+
+      rc = ble_hs_id_infer_auto(0, &own_addr_type);
+      if(rc != 0){
+            ESP_LOGE(TAG, "Error: Failed to determine address type; rc=%d", rc);
+            return;
+      }
+
+      disc_params.passive = 1;
+      disc_params.filter_duplicates = 1;
+      disc_params.itvl = 0;
+      disc_params.window = 0;
+      disc_params.filter_policy = 0;
+      disc_params.limited = 0;
+
+      rc = ble_gap_disc(own_addr_type, BLE_HS_FOREVER, &disc_params, ble_gap_event, NULL);
+      if(rc != 0){
+            ESP_LOGE(TAG, "Error: Failed to start scanning; rc=%d", rc);
+            return;
+      }
+
 }
