@@ -1,0 +1,2 @@
+"-specs=C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/build/bootloader/specs/picolibc.specs"
+-march=rv32imac_zicsr_zifencei_zaamo_zalrsc
