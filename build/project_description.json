@@ -1,7 +1,7 @@
 {
     "version":            "1.3",
     "project_name":       "my_nimble_central",
-    "project_version":    "ad26586",
+    "project_version":    "51c7574-dirty",
     "project_path":       "C:/Users/Laptop/Documents/ESPIDF/my_nimble_central",
     "idf_path":           "C:/esp/v6.0.2/esp-idf",
     "build_dir":          "C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/build",
@@ -1780,7 +1780,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/build/esp-idf/main/libmain.a",
-            "sources": [ "C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/main/src/main.c", "C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/main/src/ble_main.c", "C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/main/src/ble_gap.c", "C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/main/src/ble_host_task.c" ],
+            "sources": [ "C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/main/src/main.c", "C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/main/src/ble_main.c", "C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/main/src/ble_gap.c", "C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/main/src/ble_host_task.c", "C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/main/src/wifi_main.c" ],
             "include_dirs": [ "inc" ]
         },
         "mbedtls": {

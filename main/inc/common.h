@@ -23,6 +23,15 @@
 //esp
 #include "esp_log.h"
 #include "nvs_flash.h"
+#include "esp_netif.h"
 
 //free rtos
 #include "freertos/FreeRTOSConfig.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/event_groups.h"
+
+//wifi
+#include "esp_wifi.h"
+
+//events
+#include "esp_event.h"

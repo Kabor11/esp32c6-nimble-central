@@ -1,6 +1,9 @@
 #include "common.h"
 #include "ble_main.h"
 #include "ble_host_task.h"
+#include "wifi_main.h"
+
+static const char* TAG = "main";
 
 void app_main(void)
 {
@@ -9,8 +12,13 @@ void app_main(void)
             ESP_ERROR_CHECK(nvs_flash_erase());
             ret = nvs_flash_init();
       }
-       
+      
+      ESP_LOGI(TAG, "Starting BLE initialization");
       ble_init();
-
       nimble_port_freertos_init(ble_host_task);
+      ESP_LOGI(TAG, "BLE initialization completed");
+
+      ESP_LOGI(TAG, "Starting WiFi initialization");
+      wifi_init();
+      ESP_LOGI(TAG, "WiFi initialization completed");
 }

@@ -1,6 +1,9 @@
 #include "ble_gap.h"
 //trzeba będzie dodać uuid urządzenia (svc i charakterystyki) z którego będzie odbierany notify
 
+
+//jest napisane wszystko oprócz oprócz połączenia gap i subskrypcji
+
 static const char* TAG = "ble_gap";
 
 static const ble_uuid_t *remote_svc_uuid =
@@ -47,7 +50,6 @@ int ble_gap_event(struct ble_gap_event *event, void *arg){
             ESP_LOGI(TAG, "Number of 128-bit UUIDs: %d", fields.num_uuids128);
             ESP_LOGI(TAG, "--------------------------------");
 
-            //tutaj musze zrobić 
             
             return 0;
       case BLE_GAP_EVENT_CONNECT:
