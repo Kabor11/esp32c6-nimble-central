@@ -203,4 +203,8 @@ C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/build/esp-idf/ieee802154/libi
 C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/build/esp-idf/esp_hal_ieee802154/libesp_hal_ieee802154.a
 C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/build/esp-idf/rt/librt.a
 C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/build/esp-idf/spiffs/libspiffs.a
+C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/build/esp-idf/espressif__mqtt/libespressif__mqtt.a
+C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/build/esp-idf/espressif__mqtt/lib/mqtt_utils/libmqtt_utils_lib.a
+C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/build/esp-idf/espressif__mqtt/lib/mqtt_outbox/libmqtt_outbox_lib.a
 C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/build/esp-idf/main/libmain.a
+C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/build/esp-idf/espressif__mqtt/libespressif__mqtt.a

@@ -719,6 +719,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/build/esp-idf/espressif__mqtt/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/build/esp-idf/main/cmake_install.cmake")
 endif()
 

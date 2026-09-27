@@ -1,7 +1,9 @@
 #include "wifi_main.h"
 
-#define WIFI_SSID "Feromedia_7404"
-#define WIFI_PASSWORD "000000AF36"
+//#define WIFI_SSID "Feromedia_7404"
+//#define WIFI_PASSWORD ""
+#define WIFI_SSID "TP-Link_1_187"
+#define WIFI_PASSWORD "vSENLetzWQd"
 
 #define WIFI_CONNECTED_BIT BIT0
 #define WIFI_FAIL_BIT      BIT1

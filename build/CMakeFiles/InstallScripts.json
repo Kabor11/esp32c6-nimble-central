@@ -166,6 +166,9 @@
 		"C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/build/esp-idf/rt/cmake_install.cmake",
 		"C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/build/esp-idf/spiffs/cmake_install.cmake",
 		"C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/build/esp-idf/ulp/cmake_install.cmake",
+		"C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/build/esp-idf/espressif__mqtt/cmake_install.cmake",
+		"C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/build/esp-idf/espressif__mqtt/lib/mqtt_utils/cmake_install.cmake",
+		"C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/build/esp-idf/espressif__mqtt/lib/mqtt_outbox/cmake_install.cmake",
 		"C:/Users/Laptop/Documents/ESPIDF/my_nimble_central/build/esp-idf/main/cmake_install.cmake"
 	],
 	"Parallel" : false
