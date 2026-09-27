@@ -2,6 +2,11 @@
 
 static const char* TAG = "mqtt";
 
+extern const uint8_t ca_crt_start[] asm("_binary_ca_crt_start");
+extern const uint8_t ca_crt_end[]   asm("_binary_ca_crt_end");
+
+static const char *broker_ca_cert = (const char *)ca_crt_start;
+
 // static const char cert_override_pem[] =
 //     "-----BEGIN CERTIFICATE-----\n"
 //     CONFIG_EXAMPLE_BROKER_CERTIFICATE_OVERRIDE "\n"
@@ -54,4 +59,45 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
             ESP_LOGI(TAG, "Other event id:%d", event->event_id);
             break;
       }
+}
+
+
+void mqtt_app_start(void)
+{
+    const esp_mqtt_client_config_t mqtt_cfg = {
+        .broker = {
+            .address.uri = CONFIG_MQTT_BROKER_URI,
+
+            .verification.certificate = (const char *)broker_ca_cert,
+        },
+    };
+
+    ESP_LOGI(TAG, "Starting MQTT");
+    ESP_LOGI(TAG, "Broker: %s", CONFIG_MQTT_BROKER_URI);
+    ESP_LOGI(TAG, "Free heap: %" PRIu32, esp_get_free_heap_size());
+
+    esp_mqtt_client_handle_t client =
+        esp_mqtt_client_init(&mqtt_cfg);
+
+    if (client == NULL) {
+        ESP_LOGE(TAG, "Failed to initialize MQTT client");
+        return;
+    }
+
+    esp_mqtt_client_register_event(
+        client,
+        ESP_EVENT_ANY_ID,
+        mqtt_event_handler,
+        NULL
+    );
+
+    esp_err_t err = esp_mqtt_client_start(client);
+
+    if (err != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to start MQTT: %s",
+                 esp_err_to_name(err));
+        return;
+    }
+
+    ESP_LOGI(TAG, "MQTT client started");
 }

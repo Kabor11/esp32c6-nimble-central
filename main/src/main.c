@@ -2,6 +2,7 @@
 #include "ble_main.h"
 #include "ble_host_task.h"
 #include "wifi_main.h"
+#include "mqtt.h"
 
 static const char* TAG = "main";
 
@@ -21,4 +22,8 @@ void app_main(void)
       ESP_LOGI(TAG, "Starting WiFi initialization");
       wifi_init();
       ESP_LOGI(TAG, "WiFi initialization completed");
+
+      ESP_LOGI(TAG, "Starting MQTT initialization");
+      mqtt_app_start();
+      ESP_LOGI(TAG, "MQTT initialization completed");
 }

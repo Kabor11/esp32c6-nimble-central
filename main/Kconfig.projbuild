@@ -1,0 +1,31 @@
+menu "MQTT Configuration"
+    config MQTT_BROKER_URI
+        string "MQTT Broker URI"
+        default "mqtt://broker.hivemq.com"
+        help
+            Enter the URI of the MQTT broker to connect to.
+
+    config MQTT_CLIENT_ID
+        string "MQTT Client ID"
+        default "esp32_client"
+        help
+            Enter the client ID for the MQTT connection.
+
+    config MQTT_USERNAME
+        string "MQTT Username"
+        default ""
+        help
+            Enter the username for the MQTT connection (if required).
+
+    config MQTT_PASSWORD
+        string "MQTT Password"
+        default ""
+        help
+            Enter the password for the MQTT connection (if required).
+
+    config MQTT_TOPIC
+        string "MQTT Topic"
+        default "esp32/topic"
+        help
+            Enter the topic to publish/subscribe to.
+endmenu

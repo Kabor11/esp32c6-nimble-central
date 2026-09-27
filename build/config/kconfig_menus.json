@@ -6937,6 +6937,64 @@
     {
         "children": [
             {
+                "children": [],
+                "depends_on": null,
+                "help": "Enter the URI of the MQTT broker to connect to.",
+                "id": "MQTT_BROKER_URI",
+                "name": "MQTT_BROKER_URI",
+                "range": null,
+                "title": "MQTT Broker URI",
+                "type": "string"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "Enter the client ID for the MQTT connection.",
+                "id": "MQTT_CLIENT_ID",
+                "name": "MQTT_CLIENT_ID",
+                "range": null,
+                "title": "MQTT Client ID",
+                "type": "string"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "Enter the username for the MQTT connection (if required).",
+                "id": "MQTT_USERNAME",
+                "name": "MQTT_USERNAME",
+                "range": null,
+                "title": "MQTT Username",
+                "type": "string"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "Enter the password for the MQTT connection (if required).",
+                "id": "MQTT_PASSWORD",
+                "name": "MQTT_PASSWORD",
+                "range": null,
+                "title": "MQTT Password",
+                "type": "string"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "Enter the topic to publish/subscribe to.",
+                "id": "MQTT_TOPIC",
+                "name": "MQTT_TOPIC",
+                "range": null,
+                "title": "MQTT Topic",
+                "type": "string"
+            }
+        ],
+        "depends_on": null,
+        "id": "mqtt-configuration-C:-Users-Laptop-Documents-ESPIDF-my_nimble_central-main-Kconfig.projbuild-1",
+        "title": "MQTT Configuration",
+        "type": "menu"
+    },
+    {
+        "children": [
+            {
                 "children": [
                     {
                         "children": [],

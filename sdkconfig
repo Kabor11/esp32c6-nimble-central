@@ -1063,6 +1063,21 @@ CONFIG_PARTITION_TABLE_MD5=y
 # end of Partition Table
 
 #
+# MQTT Configuration
+#
+# default:
+CONFIG_MQTT_BROKER_URI="mqtt://broker.hivemq.com"
+# default:
+CONFIG_MQTT_CLIENT_ID="esp32_client"
+# default:
+CONFIG_MQTT_USERNAME=""
+# default:
+CONFIG_MQTT_PASSWORD=""
+# default:
+CONFIG_MQTT_TOPIC="esp32/topic"
+# end of MQTT Configuration
+
+#
 # Compiler options
 #
 # default:
