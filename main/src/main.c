@@ -19,11 +19,11 @@ void app_main(void)
       nimble_port_freertos_init(ble_host_task);
       ESP_LOGI(TAG, "BLE initialization completed");
 
-      ESP_LOGI(TAG, "Starting WiFi initialization");
-      wifi_init();
-      ESP_LOGI(TAG, "WiFi initialization completed");
+      // ESP_LOGI(TAG, "Starting WiFi initialization");
+      // wifi_init();
+      // ESP_LOGI(TAG, "WiFi initialization completed");
 
-      ESP_LOGI(TAG, "Starting MQTT initialization");
-      mqtt_app_start();
-      ESP_LOGI(TAG, "MQTT initialization completed");
+      // ESP_LOGI(TAG, "Starting MQTT initialization");
+      // mqtt_app_start();
+      // ESP_LOGI(TAG, "MQTT initialization completed");
 }
